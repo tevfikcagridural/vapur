@@ -229,6 +229,15 @@
       vertical-align: middle;
     }
 
+    .day-sep {
+      font-size: 0.72rem;
+      color: var(--text-sub);
+      text-align: center;
+      padding: 8px 0 2px;
+      opacity: 0.55;
+      letter-spacing: 0.04em;
+    }
+
     .empty-state {
       text-align: center;
       padding: 40px 20px;
@@ -368,6 +377,152 @@
           { "time": "18:15", "arrival": "18:50", "stops": ["Bostancı"] },
           { "time": "23:30", "arrival": "00:05", "stops": ["Bostancı"] }
         ]
+      },
+      {
+        "company": "Şehir Hatları",
+        "from": "Kabataş",
+        "to": "Büyükada",
+        "departures": [
+          { "time": "06:45", "arrival": "08:30", "stops": ["Kadıköy", "Kınalıada", "Burgazada", "Heybeliada", "Büyükada"], "skip_on": ["sunday", "holiday"] },
+          { "time": "07:30", "arrival": "09:15", "stops": ["Kadıköy", "Kınalıada", "Burgazada", "Heybeliada", "Büyükada"], "skip_on": ["weekday", "saturday"] },
+          { "time": "08:00", "arrival": "09:45", "stops": ["Kadıköy", "Kınalıada", "Burgazada", "Heybeliada", "Büyükada"], "skip_on": ["sunday", "holiday"] },
+          { "time": "08:30", "arrival": "10:15", "stops": ["Kadıköy", "Kınalıada", "Burgazada", "Heybeliada", "Büyükada"], "skip_on": ["weekday", "saturday"] },
+          { "time": "09:00", "arrival": "10:45", "stops": ["Kadıköy", "Kınalıada", "Burgazada", "Heybeliada", "Büyükada"], "skip_on": ["sunday", "holiday"] },
+          { "time": "09:05", "arrival": "10:50", "stops": ["Kadıköy", "Kınalıada", "Burgazada", "Heybeliada", "Büyükada"], "skip_on": ["weekday", "saturday"] },
+          { "time": "10:05", "arrival": "11:50", "stops": ["Kadıköy", "Kınalıada", "Burgazada", "Heybeliada", "Büyükada"] },
+          { "time": "11:05", "arrival": "12:50", "stops": ["Kadıköy", "Kınalıada", "Burgazada", "Heybeliada", "Büyükada"] },
+          { "time": "12:00", "arrival": "13:45", "stops": ["Kadıköy", "Kınalıada", "Burgazada", "Heybeliada", "Büyükada"], "skip_on": ["sunday", "holiday"] },
+          { "time": "12:05", "arrival": "13:50", "stops": ["Kadıköy", "Kınalıada", "Burgazada", "Heybeliada", "Büyükada"], "skip_on": ["weekday", "saturday"] },
+          { "time": "14:00", "arrival": "15:45", "stops": ["Kadıköy", "Kınalıada", "Burgazada", "Heybeliada", "Büyükada"] },
+          { "time": "16:30", "arrival": "18:15", "stops": ["Kadıköy", "Kınalıada", "Burgazada", "Heybeliada", "Büyükada"] },
+          { "time": "17:35", "arrival": "19:20", "stops": ["Kadıköy", "Kınalıada", "Burgazada", "Heybeliada", "Büyükada"] },
+          { "time": "18:25", "arrival": "19:35", "stops": ["Heybeliada", "Büyükada"] },
+          { "time": "18:50", "arrival": "20:45", "stops": ["Eminönü", "Kadıköy", "Kınalıada", "Burgazada", "Heybeliada", "Büyükada"] },
+          { "time": "19:20", "arrival": "20:35", "stops": ["Heybeliada", "Büyükada"] },
+          { "time": "19:40", "arrival": "21:25", "stops": ["Kadıköy", "Kınalıada", "Burgazada", "Heybeliada", "Büyükada"] },
+          { "time": "21:40", "arrival": "23:30", "stops": ["Kadıköy", "Kınalıada", "Burgazada", "Heybeliada", "Büyükada"] },
+          { "time": "23:30", "arrival": "01:15", "stops": ["Kadıköy", "Kınalıada", "Burgazada", "Heybeliada", "Büyükada"] }
+        ]
+      },
+      {
+        "company": "Şehir Hatları",
+        "from": "Büyükada",
+        "to": "Kabataş",
+        "departures": [
+          { "time": "05:45", "arrival": "07:45", "stops": ["Heybeliada", "Burgazada", "Kınalıada", "Kadıköy", "Eminönü", "Kabataş"], "skip_on": ["sunday", "holiday"] },
+          { "time": "06:15", "arrival": "08:15", "stops": ["Heybeliada", "Burgazada", "Kınalıada", "Kadıköy", "Eminönü", "Kabataş"], "skip_on": ["weekday", "saturday"] },
+          { "time": "06:35", "arrival": "08:25", "stops": ["Heybeliada", "Burgazada", "Kınalıada", "Kadıköy", "Kabataş"], "skip_on": ["sunday", "holiday"] },
+          { "time": "07:00", "arrival": "08:50", "stops": ["Heybeliada", "Burgazada", "Kınalıada", "Kadıköy", "Kabataş"], "skip_on": ["weekday", "saturday"] },
+          { "time": "07:35", "arrival": "09:30", "stops": ["Heybeliada", "Burgazada", "Kınalıada", "Kadıköy", "Kabataş"], "skip_on": ["weekday", "saturday"] },
+          { "time": "07:40", "arrival": "09:30", "stops": ["Heybeliada", "Burgazada", "Kınalıada", "Kadıköy", "Kabataş"], "skip_on": ["sunday", "holiday"] },
+          { "time": "07:55", "arrival": "09:05", "stops": ["Heybeliada", "Kabataş"], "skip_on": ["sunday", "holiday"] },
+          { "time": "08:15", "arrival": "09:25", "stops": ["Heybeliada", "Kabataş"], "skip_on": ["weekday", "saturday"] },
+          { "time": "09:00", "arrival": "10:50", "stops": ["Heybeliada", "Burgazada", "Kınalıada", "Kadıköy", "Kabataş"] },
+          { "time": "10:35", "arrival": "12:25", "stops": ["Heybeliada", "Burgazada", "Kınalıada", "Kadıköy", "Kabataş"], "skip_on": ["sunday", "holiday"] },
+          { "time": "11:00", "arrival": "12:50", "stops": ["Heybeliada", "Burgazada", "Kınalıada", "Kadıköy", "Kabataş"], "skip_on": ["weekday", "saturday"] },
+          { "time": "12:05", "arrival": "13:55", "stops": ["Heybeliada", "Burgazada", "Kınalıada", "Kadıköy", "Kabataş"] },
+          { "time": "13:30", "arrival": "15:20", "stops": ["Heybeliada", "Burgazada", "Kınalıada", "Kadıköy", "Kabataş"] },
+          { "time": "15:00", "arrival": "16:50", "stops": ["Heybeliada", "Burgazada", "Kınalıada", "Kadıköy", "Kabataş"] },
+          { "time": "16:30", "arrival": "18:20", "stops": ["Heybeliada", "Burgazada", "Kınalıada", "Kadıköy", "Kabataş"] },
+          { "time": "17:35", "arrival": "19:25", "stops": ["Heybeliada", "Burgazada", "Kınalıada", "Kadıköy", "Kabataş"] },
+          { "time": "18:30", "arrival": "20:20", "stops": ["Heybeliada", "Burgazada", "Kınalıada", "Kadıköy", "Kabataş"] },
+          { "time": "19:35", "arrival": "21:25", "stops": ["Heybeliada", "Burgazada", "Kınalıada", "Kadıköy", "Kabataş"] },
+          { "time": "20:35", "arrival": "22:25", "stops": ["Heybeliada", "Burgazada", "Kınalıada", "Kadıköy", "Kabataş"] },
+          { "time": "21:45", "arrival": "23:35", "stops": ["Heybeliada", "Burgazada", "Kınalıada", "Kadıköy", "Kabataş"] }
+        ]
+      },
+      {
+        "company": "Şehir Hatları",
+        "from": "Kadıköy",
+        "to": "Büyükada",
+        "departures": [
+          { "time": "07:10", "arrival": "08:30", "stops": ["Kınalıada", "Burgazada", "Heybeliada", "Büyükada"], "skip_on": ["sunday", "holiday"] },
+          { "time": "07:55", "arrival": "09:15", "stops": ["Kınalıada", "Burgazada", "Heybeliada", "Büyükada"], "skip_on": ["weekday", "saturday"] },
+          { "time": "08:25", "arrival": "09:45", "stops": ["Kınalıada", "Burgazada", "Heybeliada", "Büyükada"], "skip_on": ["sunday", "holiday"] },
+          { "time": "08:55", "arrival": "10:15", "stops": ["Kınalıada", "Burgazada", "Heybeliada", "Büyükada"], "skip_on": ["weekday", "saturday"] },
+          { "time": "09:25", "arrival": "10:45", "stops": ["Kınalıada", "Burgazada", "Heybeliada", "Büyükada"], "skip_on": ["sunday", "holiday"] },
+          { "time": "09:30", "arrival": "10:50", "stops": ["Kınalıada", "Burgazada", "Heybeliada", "Büyükada"], "skip_on": ["weekday", "saturday"] },
+          { "time": "10:30", "arrival": "11:50", "stops": ["Kınalıada", "Burgazada", "Heybeliada", "Büyükada"] },
+          { "time": "11:30", "arrival": "12:50", "stops": ["Kınalıada", "Burgazada", "Heybeliada", "Büyükada"] },
+          { "time": "12:25", "arrival": "13:45", "stops": ["Kınalıada", "Burgazada", "Heybeliada", "Büyükada"], "skip_on": ["sunday", "holiday"] },
+          { "time": "12:30", "arrival": "13:50", "stops": ["Kınalıada", "Burgazada", "Heybeliada", "Büyükada"], "skip_on": ["weekday", "saturday"] },
+          { "time": "14:25", "arrival": "15:45", "stops": ["Kınalıada", "Burgazada", "Heybeliada", "Büyükada"] },
+          { "time": "16:55", "arrival": "18:15", "stops": ["Kınalıada", "Burgazada", "Heybeliada", "Büyükada"] },
+          { "time": "18:00", "arrival": "19:20", "stops": ["Kınalıada", "Burgazada", "Heybeliada", "Büyükada"] },
+          { "time": "19:25", "arrival": "20:45", "stops": ["Kınalıada", "Burgazada", "Heybeliada", "Büyükada"] },
+          { "time": "20:05", "arrival": "21:25", "stops": ["Kınalıada", "Burgazada", "Heybeliada", "Büyükada"] },
+          { "time": "22:05", "arrival": "23:30", "stops": ["Kınalıada", "Burgazada", "Heybeliada", "Büyükada"] },
+          { "time": "23:55", "arrival": "01:15", "stops": ["Kınalıada", "Burgazada", "Heybeliada", "Büyükada"] }
+        ]
+      },
+      {
+        "company": "Şehir Hatları",
+        "from": "Maltepe",
+        "to": "Büyükada",
+        "departures": [
+          { "time": "06:45", "arrival": "07:05", "stops": ["Büyükada"], "skip_on": ["sunday", "holiday"] },
+          { "time": "08:20", "arrival": "08:40", "stops": ["Büyükada"], "skip_on": ["sunday", "holiday"] },
+          { "time": "09:15", "arrival": "09:35", "stops": ["Büyükada"] },
+          { "time": "10:05", "arrival": "10:25", "stops": ["Büyükada"] },
+          { "time": "11:20", "arrival": "11:40", "stops": ["Büyükada"] },
+          { "time": "12:00", "arrival": "12:20", "stops": ["Büyükada"] },
+          { "time": "13:45", "arrival": "14:05", "stops": ["Büyükada"] },
+          { "time": "15:35", "arrival": "15:55", "stops": ["Büyükada"] },
+          { "time": "16:50", "arrival": "17:10", "stops": ["Büyükada"] },
+          { "time": "17:50", "arrival": "18:10", "stops": ["Büyükada"] },
+          { "time": "18:35", "arrival": "18:55", "stops": ["Büyükada"] },
+          { "time": "19:05", "arrival": "19:25", "stops": ["Büyükada"] },
+          { "time": "20:05", "arrival": "20:25", "stops": ["Büyükada"] },
+          { "time": "20:40", "arrival": "21:00", "stops": ["Büyükada"] },
+          { "time": "21:45", "arrival": "22:05", "stops": ["Büyükada"] }
+        ]
+      },
+      {
+        "company": "Şehir Hatları",
+        "from": "Büyükada",
+        "to": "Maltepe",
+        "departures": [
+          { "time": "07:50", "arrival": "08:10", "stops": ["Maltepe"], "skip_on": ["sunday", "holiday"] },
+          { "time": "08:45", "arrival": "09:05", "stops": ["Maltepe"], "skip_on": ["sunday", "holiday"] },
+          { "time": "09:30", "arrival": "09:50", "stops": ["Maltepe"] },
+          { "time": "10:55", "arrival": "11:15", "stops": ["Maltepe"] },
+          { "time": "11:15", "arrival": "11:35", "stops": ["Maltepe"] },
+          { "time": "13:00", "arrival": "13:20", "stops": ["Maltepe"] },
+          { "time": "14:45", "arrival": "15:05", "stops": ["Maltepe"] },
+          { "time": "15:55", "arrival": "16:15", "stops": ["Maltepe"] },
+          { "time": "17:20", "arrival": "17:40", "stops": ["Maltepe"] },
+          { "time": "17:55", "arrival": "18:15", "stops": ["Maltepe"] },
+          { "time": "18:40", "arrival": "19:00", "stops": ["Maltepe"] },
+          { "time": "19:30", "arrival": "19:50", "stops": ["Maltepe"] },
+          { "time": "20:00", "arrival": "20:20", "stops": ["Maltepe"] },
+          { "time": "21:00", "arrival": "21:20", "stops": ["Maltepe"] },
+          { "time": "21:35", "arrival": "21:55", "stops": ["Maltepe"] }
+        ]
+      },
+      {
+        "company": "Şehir Hatları",
+        "from": "Büyükada",
+        "to": "Kadıköy",
+        "departures": [
+          { "time": "05:45", "arrival": "07:05", "stops": ["Heybeliada", "Burgazada", "Kınalıada", "Kadıköy"], "skip_on": ["sunday", "holiday"] },
+          { "time": "06:15", "arrival": "07:35", "stops": ["Heybeliada", "Burgazada", "Kınalıada", "Kadıköy"], "skip_on": ["weekday", "saturday"] },
+          { "time": "06:35", "arrival": "07:55", "stops": ["Heybeliada", "Burgazada", "Kınalıada", "Kadıköy"], "skip_on": ["sunday", "holiday"] },
+          { "time": "07:00", "arrival": "08:20", "stops": ["Heybeliada", "Burgazada", "Kınalıada", "Kadıköy"], "skip_on": ["weekday", "saturday"] },
+          { "time": "07:35", "arrival": "09:00", "stops": ["Heybeliada", "Burgazada", "Kınalıada", "Kadıköy"], "skip_on": ["weekday", "saturday"] },
+          { "time": "07:40", "arrival": "09:00", "stops": ["Heybeliada", "Burgazada", "Kınalıada", "Kadıköy"], "skip_on": ["sunday", "holiday"] },
+          { "time": "09:00", "arrival": "10:20", "stops": ["Heybeliada", "Burgazada", "Kınalıada", "Kadıköy"] },
+          { "time": "10:35", "arrival": "11:55", "stops": ["Heybeliada", "Burgazada", "Kınalıada", "Kadıköy"], "skip_on": ["sunday", "holiday"] },
+          { "time": "11:00", "arrival": "12:20", "stops": ["Heybeliada", "Burgazada", "Kınalıada", "Kadıköy"], "skip_on": ["weekday", "saturday"] },
+          { "time": "12:05", "arrival": "13:25", "stops": ["Heybeliada", "Burgazada", "Kınalıada", "Kadıköy"] },
+          { "time": "13:30", "arrival": "14:50", "stops": ["Heybeliada", "Burgazada", "Kınalıada", "Kadıköy"] },
+          { "time": "15:00", "arrival": "16:20", "stops": ["Heybeliada", "Burgazada", "Kınalıada", "Kadıköy"] },
+          { "time": "16:30", "arrival": "17:50", "stops": ["Heybeliada", "Burgazada", "Kınalıada", "Kadıköy"] },
+          { "time": "17:35", "arrival": "18:55", "stops": ["Heybeliada", "Burgazada", "Kınalıada", "Kadıköy"] },
+          { "time": "18:30", "arrival": "19:50", "stops": ["Heybeliada", "Burgazada", "Kınalıada", "Kadıköy"] },
+          { "time": "19:35", "arrival": "20:55", "stops": ["Heybeliada", "Burgazada", "Kınalıada", "Kadıköy"] },
+          { "time": "20:35", "arrival": "21:55", "stops": ["Heybeliada", "Burgazada", "Kınalıada", "Kadıköy"] },
+          { "time": "21:45", "arrival": "23:05", "stops": ["Heybeliada", "Burgazada", "Kınalıada", "Kadıköy"] }
+        ]
       }
     ];
 
@@ -441,16 +596,17 @@
       return { text: m > 0 ? `${h} sa ${m} dk` : `${h} sa`, soon: false };
     }
 
-    function arrMins(dep) {
+    function arrAbsMins(dep) {
       const a = toMins(dep.arrival);
-      return a < dep.depMins ? a + 1440 : a;
+      const duration = a >= dep.depMins ? a - dep.depMins : a + 1440 - dep.depMins;
+      return dep.absoluteMins + duration;
     }
 
     function markFastTrips(deps) {
       for (let i = 0; i < deps.length; i++) {
-        const ai = arrMins(deps[i]);
+        const ai = arrAbsMins(deps[i]);
         for (let j = 0; j < i; j++) {
-          if (arrMins(deps[j]) > ai) {
+          if (arrAbsMins(deps[j]) > ai) {
             deps[i].fast = true;
             break;
           }
@@ -507,19 +663,28 @@
       dayInfoEl.textContent = `${dateStr} · ${DAY_LABELS[dayType]}`;
       dayInfoEl.className = 'day-info' + (dayType === 'holiday' || dayType === 'sunday' ? ' holiday' : '');
 
-      // Collect all matching departures
-      const deps = [];
-      for (const route of ROUTES) {
-        if (route.from !== from || route.to !== to) continue;
-        for (const dep of route.departures) {
-          if (dep.skip_on && dep.skip_on.includes(dayType)) continue;
-          const dm = toMins(dep.time);
-          if (dm < selMins) continue;
-          deps.push({ ...dep, company: route.company, depMins: dm });
+      // Collect next 10 departures across day boundaries
+      const allDeps = [];
+      for (let dayOffset = 0; dayOffset < 7; dayOffset++) {
+        const checkDate = new Date(selDate);
+        checkDate.setDate(checkDate.getDate() + dayOffset);
+        const checkDayType = getDayType(checkDate);
+        const baseOffset = dayOffset * 1440;
+        for (const route of ROUTES) {
+          if (route.from !== from || route.to !== to) continue;
+          for (const dep of route.departures) {
+            if (dep.skip_on && dep.skip_on.includes(checkDayType)) continue;
+            const absoluteMins = toMins(dep.time) + baseOffset;
+            if (absoluteMins >= selMins) {
+              allDeps.push({ ...dep, company: route.company, depMins: toMins(dep.time), absoluteMins, dayOffset });
+            }
+          }
         }
+        allDeps.sort((a, b) => a.absoluteMins - b.absoluteMins);
+        if (allDeps.length >= 10) break;
       }
 
-      deps.sort((a, b) => a.depMins - b.depMins);
+      const deps = allDeps.slice(0, 10);
       markFastTrips(deps);
 
       const list = document.getElementById('dep-list');
@@ -529,17 +694,25 @@
         return;
       }
 
-      list.innerHTML = deps.map(dep => {
-        const diff = dep.depMins - selMins;
+      const cards = [];
+      let lastDayOffset = 0;
+      for (const dep of deps) {
+        if (dep.dayOffset > lastDayOffset) {
+          const labelDate = new Date(selDate);
+          labelDate.setDate(labelDate.getDate() + dep.dayOffset);
+          const label = dep.dayOffset === 1 ? '---' : labelDate.toLocaleDateString('tr-TR', { day: 'numeric', month: 'long' });
+          cards.push(`<div class="day-sep">${label}</div>`);
+          lastDayOffset = dep.dayOffset;
+        }
+
+        const diff = dep.absoluteMins - selMins;
         const rem = formatRemaining(diff);
         const intermediates = getIntermediates(dep.stops, to);
-
         let detailParts = [dep.company];
         if (intermediates !== null) {
           detailParts.push(intermediates.length > 0 ? `${intermediates.join(', ')} üzerinden` : 'Direkt');
         }
-
-        return `<div class="dep-card${dep.fast ? ' fast' : ''}">
+        cards.push(`<div class="dep-card${dep.fast ? ' fast' : ''}">
           <div class="dep-times">
             <span class="dep-time">${dep.time}</span>
             <span class="dep-arrow">→</span>
@@ -550,8 +723,10 @@
             <span class="dep-details">${detailParts.join(' · ')}</span>
             <span class="dep-remaining${rem.soon ? ' soon' : ''}">${rem.text}</span>
           </div>
-        </div>`;
-      }).join('');
+        </div>`);
+      }
+
+      list.innerHTML = cards.join('');
     }
 
     // Init
