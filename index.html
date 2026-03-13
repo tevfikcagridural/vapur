@@ -590,7 +590,6 @@
     }
 
     function formatRemaining(diffMins) {
-      if (diffMins === 0) return { text: 'Şimdi', soon: true };
       if (diffMins < 60) return { text: `${diffMins} dk`, soon: diffMins <= 10 };
       const h = Math.floor(diffMins / 60), m = diffMins % 60;
       return { text: m > 0 ? `${h} sa ${m} dk` : `${h} sa`, soon: false };
