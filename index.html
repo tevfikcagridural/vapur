@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vapur Saatleri</title>
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --bg: #f0f2f5;
+      --surface: #ffffff;
+      --text: #111827;
+      --text-sub: #6b7280;
+      --accent: #1d6cf5;
+      --accent-bg: #eff6ff;
+      --border: #e5e7eb;
+      --shadow: 0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.04);
+      --radius: 12px;
+      --holiday: #f59e0b;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0f172a;
+        --surface: #1e293b;
+        --text: #f1f5f9;
+        --text-sub: #94a3b8;
+        --accent: #60a5fa;
+        --accent-bg: #1e3a5f;
+        --border: #334155;
+        --shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+      }
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+      min-height: 100vh;
+      padding: 12px 16px max(16px, env(safe-area-inset-bottom));
+      max-width: 480px;
+      margin: 0 auto;
+    }
+
+    .app-header {
+      padding: 18px 0 14px;
+      font-size: 1.2rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+    }
+
+    .card {
+      background: var(--surface);
+      border-radius: var(--radius);
+      padding: 14px 16px;
+      box-shadow: var(--shadow);
+      margin-bottom: 10px;
+    }
+
+    /* Route selector */
+    .route-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    select {
+      flex: 1;
+      min-width: 0;
+      background: var(--bg);
+      color: var(--text);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 10px 6px;
+      font-size: 1rem;
+      font-weight: 600;
+      font-family: inherit;
+      text-align: center;
+      -webkit-appearance: none;
+      appearance: none;
+      cursor: pointer;
+    }
+
+    .btn-swap {
+      background: var(--accent);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      padding: 10px 14px;
+      font-size: 1rem;
+      cursor: pointer;
+      flex-shrink: 0;
+      line-height: 1;
+    }
+
+    /* Datetime row */
+    .datetime-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    input[type="datetime-local"] {
+      flex: 1;
+      min-width: 0;
+      background: var(--bg);
+      color: var(--text);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 10px 12px;
+      font-size: 0.9rem;
+      font-family: inherit;
+      cursor: pointer;
+    }
+
+    .btn-now {
+      background: var(--accent-bg);
+      color: var(--accent);
+      border: none;
+      border-radius: 8px;
+      padding: 10px 14px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      font-family: inherit;
+      cursor: pointer;
+      flex-shrink: 0;
+      white-space: nowrap;
+    }
+
+    /* Day info */
+    .day-info {
+      font-size: 0.8rem;
+      color: var(--text-sub);
+      padding: 2px 0 10px;
+      transition: color 0.2s;
+    }
+
+    .day-info.holiday {
+      color: var(--holiday);
+      font-weight: 600;
+    }
+
+    /* Departure cards */
+    .dep-card {
+      background: var(--surface);
+      border-radius: var(--radius);
+      padding: 14px 16px;
+      box-shadow: var(--shadow);
+      margin-bottom: 8px;
+    }
+
+    .dep-times {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+
+    .dep-time {
+      font-size: 1.65rem;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1;
+    }
+
+    .dep-arrow {
+      color: var(--text-sub);
+      font-size: 1rem;
+    }
+
+    .arr-time {
+      font-size: 1.65rem;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      color: var(--text-sub);
+      line-height: 1;
+    }
+
+    .dep-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .dep-details {
+      font-size: 0.8rem;
+      color: var(--text-sub);
+      min-width: 0;
+    }
+
+    .dep-remaining {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--accent);
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .dep-remaining.soon {
+      color: #ef4444;
+    }
+
+    .empty-state {
+      text-align: center;
+      padding: 40px 20px;
+      color: var(--text-sub);
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="app-header">Vapur Saatleri</div>
+
+  <div class="card">
+    <div class="route-row">
+      <select id="sel-from" aria-label="Kalkış iskelesi"></select>
+      <button class="btn-swap" onclick="swap()" aria-label="Güzergahı değiştir">⇆</button>
+      <select id="sel-to" aria-label="Varış iskelesi"></select>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="datetime-row">
+      <input type="datetime-local" id="inp-datetime" aria-label="Tarih ve saat"
+        onclick="try{ this.showPicker() }catch(e){}">
+      <button class="btn-now" onclick="goNow()">Şimdi</button>
+    </div>
+  </div>
+
+  <div class="day-info" id="day-info"></div>
+  <div id="dep-list"></div>
+
+  <script>
+    const ROUTES = [
+      {
+        "company": "Mavi Marmara",
+        "from": "Bostancı",
+        "to": "Büyükada",
+        "departures": [
+          { "time": "07:10", "arrival": "07:55", "stops": ["Heybeliada", "Büyükada"], "skip_on": ["sunday", "holiday"] },
+          { "time": "08:00", "arrival": "08:45", "stops": ["Heybeliada", "Büyükada"] },
+          { "time": "09:00", "arrival": "09:35", "stops": ["Büyükada", "Heybeliada"] },
+          { "time": "10:30", "arrival": "11:05", "stops": ["Büyükada", "Heybeliada"] },
+          { "time": "11:30", "arrival": "12:15", "stops": ["Heybeliada", "Büyükada"] },
+          { "time": "12:30", "arrival": "13:05", "stops": ["Büyükada", "Heybeliada"] },
+          { "time": "13:30", "arrival": "14:05", "stops": ["Büyükada", "Heybeliada"] },
+          { "time": "14:45", "arrival": "15:20", "stops": ["Büyükada", "Heybeliada"] },
+          { "time": "15:30", "arrival": "16:15", "stops": ["Heybeliada", "Büyükada"] },
+          { "time": "16:20", "arrival": "16:55", "stops": ["Büyükada", "Heybeliada"] },
+          { "time": "17:30", "arrival": "18:15", "stops": ["Heybeliada", "Büyükada"] },
+          { "time": "18:20", "arrival": "18:55", "stops": ["Büyükada", "Heybeliada"] },
+          { "time": "19:30", "arrival": "20:05", "stops": ["Büyükada", "Heybeliada"] },
+          { "time": "21:00", "arrival": "21:45", "stops": ["Heybeliada", "Büyükada"] },
+          { "time": "22:00", "arrival": "22:35", "stops": ["Büyükada", "Heybeliada"] },
+          { "time": "23:00", "arrival": "23:45", "stops": ["Heybeliada", "Büyükada"] }
+        ]
+      },
+      {
+        "company": "Mavi Marmara",
+        "from": "Büyükada",
+        "to": "Bostancı",
+        "departures": [
+          { "time": "06:20", "arrival": "07:05", "stops": ["Heybeliada", "Bostancı"] },
+          { "time": "07:25", "arrival": "08:00", "stops": ["Bostancı"], "skip_on": ["sunday", "holiday"] },
+          { "time": "08:00", "arrival": "08:35", "stops": ["Bostancı"] },
+          { "time": "08:50", "arrival": "09:25", "stops": ["Bostancı"] },
+          { "time": "09:35", "arrival": "10:20", "stops": ["Heybeliada", "Bostancı"] },
+          { "time": "11:05", "arrival": "11:50", "stops": ["Heybeliada", "Bostancı"] },
+          { "time": "12:20", "arrival": "12:55", "stops": ["Bostancı"] },
+          { "time": "13:05", "arrival": "13:50", "stops": ["Heybeliada", "Bostancı"] },
+          { "time": "14:05", "arrival": "14:50", "stops": ["Heybeliada", "Bostancı"] },
+          { "time": "15:20", "arrival": "16:05", "stops": ["Heybeliada", "Bostancı"] },
+          { "time": "16:20", "arrival": "16:55", "stops": ["Bostancı"] },
+          { "time": "17:25", "arrival": "18:00", "stops": ["Bostancı"] },
+          { "time": "18:20", "arrival": "18:55", "stops": ["Bostancı"] },
+          { "time": "19:20", "arrival": "19:55", "stops": ["Bostancı"] },
+          { "time": "20:35", "arrival": "21:10", "stops": ["Bostancı"] },
+          { "time": "21:50", "arrival": "22:25", "stops": ["Bostancı"] }
+        ]
+      },
+      {
+        "company": "Şehir Hatları",
+        "from": "Bostancı",
+        "to": "Büyükada",
+        "departures": [
+          { "time": "00:00", "arrival": "00:35", "stops": ["Büyükada"] },
+          { "time": "02:00", "arrival": "03:10", "stops": ["Kınalıada", "Burgazada", "Heybeliada", "Büyükada"] },
+          { "time": "04:45", "arrival": "05:55", "stops": ["Kınalıada", "Burgazada", "Heybeliada", "Büyükada"] },
+          { "time": "07:45", "arrival": "08:20", "stops": ["Büyükada"] },
+          { "time": "09:25", "arrival": "10:00", "stops": ["Büyükada"], "skip_on": ["sunday", "holiday"] },
+          { "time": "10:05", "arrival": "10:40", "stops": ["Büyükada"], "skip_on": ["weekday", "saturday"] },
+          { "time": "11:00", "arrival": "11:35", "stops": ["Büyükada"] },
+          { "time": "15:10", "arrival": "16:20", "stops": ["Kınalıada", "Burgazada", "Heybeliada", "Büyükada"] },
+          { "time": "18:35", "arrival": "19:10", "stops": ["Büyükada"] },
+          { "time": "21:45", "arrival": "22:55", "stops": ["Kınalıada", "Burgazada", "Heybeliada", "Büyükada"] }
+        ]
+      },
+      {
+        "company": "Şehir Hatları",
+        "from": "Büyükada",
+        "to": "Bostancı",
+        "departures": [
+          { "time": "00:35", "arrival": "01:45", "stops": ["Heybeliada", "Burgazada", "Kınalıada", "Bostancı"] },
+          { "time": "03:10", "arrival": "03:45", "stops": ["Bostancı"] },
+          { "time": "05:55", "arrival": "06:30", "stops": ["Bostancı"] },
+          { "time": "06:45", "arrival": "07:30", "stops": ["Heybeliada", "Bostancı"], "skip_on": ["sunday", "holiday"] },
+          { "time": "07:05", "arrival": "07:45", "stops": ["Heybeliada", "Bostancı"], "skip_on": ["weekday", "saturday"] },
+          { "time": "10:00", "arrival": "11:10", "stops": ["Heybeliada", "Burgazada", "Kınalıada", "Bostancı"], "skip_on": ["sunday", "holiday"] },
+          { "time": "10:40", "arrival": "11:50", "stops": ["Heybeliada", "Burgazada", "Kınalıada", "Bostancı"], "skip_on": ["weekday", "saturday"] },
+          { "time": "16:20", "arrival": "16:55", "stops": ["Bostancı"] },
+          { "time": "17:45", "arrival": "18:20", "stops": ["Bostancı"] },
+          { "time": "19:10", "arrival": "20:20", "stops": ["Heybeliada", "Burgazada", "Kınalıada", "Bostancı"] },
+          { "time": "22:55", "arrival": "23:30", "stops": ["Bostancı"] }
+        ]
+      },
+      {
+        "company": "Şehir Hatları",
+        "from": "Bostancı",
+        "to": "Büyükada",
+        "departures": [
+          { "time": "07:00", "arrival": "07:35", "stops": ["Büyükada"], "skip_on": ["weekday", "saturday"] },
+          { "time": "07:05", "arrival": "07:40", "stops": ["Büyükada"], "skip_on": ["sunday", "holiday"] },
+          { "time": "12:55", "arrival": "13:30", "stops": ["Büyükada"] },
+          { "time": "17:55", "arrival": "18:30", "stops": ["Büyükada"] },
+          { "time": "20:00", "arrival": "20:35", "stops": ["Büyükada"] }
+        ]
+      },
+      {
+        "company": "Şehir Hatları",
+        "from": "Büyükada",
+        "to": "Bostancı",
+        "departures": [
+          { "time": "08:30", "arrival": "09:05", "stops": ["Bostancı"], "skip_on": ["sunday", "holiday"] },
+          { "time": "09:15", "arrival": "09:50", "stops": ["Bostancı"], "skip_on": ["weekday", "saturday"] },
+          { "time": "12:50", "arrival": "13:25", "stops": ["Bostancı"] },
+          { "time": "18:15", "arrival": "18:50", "stops": ["Bostancı"] },
+          { "time": "23:30", "arrival": "00:05", "stops": ["Bostancı"] }
+        ]
+      }
+    ];
+
+    // 2026 official Turkish holidays [year, month, day]
+    const HOLIDAYS = [
+      [2026, 1, 1],  // Yılbaşı
+      [2026, 3, 19],  // Ramazan Bayramı Arifesi
+      [2026, 3, 20],  // Ramazan Bayramı 1. gün
+      [2026, 3, 21],  // Ramazan Bayramı 2. gün
+      [2026, 3, 22],  // Ramazan Bayramı 3. gün
+      [2026, 4, 23],  // Ulusal Egemenlik ve Çocuk Bayramı
+      [2026, 5, 1],  // Emek ve Dayanışma Günü
+      [2026, 5, 19],  // Atatürk'ü Anma, Gençlik ve Spor Bayramı
+      [2026, 5, 26],  // Kurban Bayramı Arifesi
+      [2026, 5, 27],  // Kurban Bayramı 1. gün
+      [2026, 5, 28],  // Kurban Bayramı 2. gün
+      [2026, 5, 29],  // Kurban Bayramı 3. gün
+      [2026, 5, 30],  // Kurban Bayramı 4. gün
+      [2026, 7, 15],  // Demokrasi ve Millî Birlik Günü
+      [2026, 8, 30],  // Zafer Bayramı
+      [2026, 10, 28],  // Cumhuriyet Bayramı Arifesi
+      [2026, 10, 29],  // Cumhuriyet Bayramı
+      [2026, 12, 31],  // Yılbaşı gecesi
+    ];
+
+    let autoTime = true;
+
+    function pad(n) { return String(n).padStart(2, '0'); }
+
+    function nowLocal() {
+      const d = new Date();
+      return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}T${pad(d.getHours())}:${pad(d.getMinutes())}`;
+    }
+
+    function toMins(t) {
+      const [h, m] = t.split(':').map(Number);
+      return h * 60 + m;
+    }
+
+    function isHoliday(d) {
+      const y = d.getFullYear(), mo = d.getMonth() + 1, dy = d.getDate();
+      return HOLIDAYS.some(([hy, hm, hd]) => hy === y && hm === mo && hd === dy);
+    }
+
+    function getDayType(d) {
+      if (isHoliday(d)) return 'holiday';
+      const dow = d.getDay();
+      if (dow === 0) return 'sunday';
+      if (dow === 6) return 'saturday';
+      return 'weekday';
+    }
+
+    const DAY_LABELS = {
+      weekday: 'Hafta içi',
+      saturday: 'Cumartesi',
+      sunday: 'Pazar',
+      holiday: 'Resmi Tatil'
+    };
+
+    function getIntermediates(stops, toPier) {
+      if (!stops) return null;
+      const idx = stops.indexOf(toPier);
+      if (idx <= 0) return [];
+      return stops.slice(0, idx);
+    }
+
+    function formatRemaining(diffMins) {
+      if (diffMins === 0) return { text: 'Şimdi', soon: true };
+      if (diffMins < 60) return { text: `${diffMins} dk`, soon: diffMins <= 10 };
+      const h = Math.floor(diffMins / 60), m = diffMins % 60;
+      return { text: m > 0 ? `${h} sa ${m} dk` : `${h} sa`, soon: false };
+    }
+
+    function initSelects() {
+      const froms = [...new Set(ROUTES.map(r => r.from))].sort();
+      const selFrom = document.getElementById('sel-from');
+      selFrom.innerHTML = froms.map(p => `<option value="${p}">${p}</option>`).join('');
+      updateToSelect();
+    }
+
+    function updateToSelect() {
+      const from = document.getElementById('sel-from').value;
+      const tos = [...new Set(ROUTES.filter(r => r.from === from).map(r => r.to))].sort();
+      const selTo = document.getElementById('sel-to');
+      const prev = selTo.value;
+      selTo.innerHTML = tos.map(p => `<option value="${p}">${p}</option>`).join('');
+      if (tos.includes(prev)) selTo.value = prev;
+    }
+
+    function swap() {
+      const sf = document.getElementById('sel-from');
+      const st = document.getElementById('sel-to');
+      const prevFrom = sf.value, prevTo = st.value;
+      sf.value = prevTo;
+      updateToSelect();
+      const toOpts = [...document.getElementById('sel-to').options].map(o => o.value);
+      if (toOpts.includes(prevFrom)) document.getElementById('sel-to').value = prevFrom;
+      render();
+    }
+
+    function goNow() {
+      autoTime = true;
+      document.getElementById('inp-datetime').value = nowLocal();
+      render();
+    }
+
+    function render() {
+      const from = document.getElementById('sel-from').value;
+      const to = document.getElementById('sel-to').value;
+      const dtVal = document.getElementById('inp-datetime').value;
+      if (!dtVal || from === to) return;
+
+      const selDate = new Date(dtVal);
+      const dayType = getDayType(selDate);
+      const selMins = selDate.getHours() * 60 + selDate.getMinutes();
+
+      // Day info — color amber on holiday
+      const dayInfoEl = document.getElementById('day-info');
+      const dateStr = selDate.toLocaleDateString('tr-TR', { day: 'numeric', month: 'long', year: 'numeric' });
+      dayInfoEl.textContent = `${dateStr} · ${DAY_LABELS[dayType]}`;
+      dayInfoEl.className = 'day-info' + (dayType === 'holiday' || dayType === 'sunday' ? ' holiday' : '');
+
+      // Collect all matching departures
+      const deps = [];
+      for (const route of ROUTES) {
+        if (route.from !== from || route.to !== to) continue;
+        for (const dep of route.departures) {
+          if (dep.skip_on && dep.skip_on.includes(dayType)) continue;
+          const dm = toMins(dep.time);
+          if (dm < selMins) continue;
+          deps.push({ ...dep, company: route.company, depMins: dm });
+        }
+      }
+
+      deps.sort((a, b) => a.depMins - b.depMins);
+
+      const list = document.getElementById('dep-list');
+
+      if (deps.length === 0) {
+        list.innerHTML = `<div class="empty-state">Bu tarih ve saatten itibaren<br>sefer bulunamadı.</div>`;
+        return;
+      }
+
+      list.innerHTML = deps.map(dep => {
+        const diff = dep.depMins - selMins;
+        const rem = formatRemaining(diff);
+        const intermediates = getIntermediates(dep.stops, to);
+
+        let detailParts = [dep.company];
+        if (intermediates !== null) {
+          detailParts.push(intermediates.length > 0 ? `${intermediates.join(', ')} üzerinden` : 'Direkt');
+        }
+
+        return `<div class="dep-card">
+          <div class="dep-times">
+            <span class="dep-time">${dep.time}</span>
+            <span class="dep-arrow">→</span>
+            <span class="arr-time">${dep.arrival}</span>
+          </div>
+          <div class="dep-meta">
+            <span class="dep-details">${detailParts.join(' · ')}</span>
+            <span class="dep-remaining${rem.soon ? ' soon' : ''}">${rem.text}</span>
+          </div>
+        </div>`;
+      }).join('');
+    }
+
+    // Init
+    document.getElementById('inp-datetime').value = nowLocal();
+    initSelects();
+    render();
+
+    document.getElementById('sel-from').addEventListener('change', () => { updateToSelect(); render(); });
+    document.getElementById('sel-to').addEventListener('change', render);
+    document.getElementById('inp-datetime').addEventListener('input', () => { autoTime = false; render(); });
+
+    // Auto-refresh every minute when in "now" mode
+    setInterval(() => {
+      if (autoTime) {
+        document.getElementById('inp-datetime').value = nowLocal();
+        render();
+      }
+    }, 60000);
+  </script>
+</body>
+
+</html>
