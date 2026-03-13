@@ -209,6 +209,26 @@
       color: #ef4444;
     }
 
+    .dep-card.fast {
+      border-left: 4px solid #22c55e;
+      background: color-mix(in srgb, #22c55e 8%, var(--surface));
+    }
+
+    .dep-card.fast .arr-time {
+      color: #22c55e;
+    }
+
+    .fast-badge {
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: #22c55e;
+      background: color-mix(in srgb, #22c55e 15%, transparent);
+      border-radius: 4px;
+      padding: 2px 6px;
+      margin-left: 6px;
+      vertical-align: middle;
+    }
+
     .empty-state {
       text-align: center;
       padding: 40px 20px;
@@ -421,6 +441,23 @@
       return { text: m > 0 ? `${h} sa ${m} dk` : `${h} sa`, soon: false };
     }
 
+    function arrMins(dep) {
+      const a = toMins(dep.arrival);
+      return a < dep.depMins ? a + 1440 : a;
+    }
+
+    function markFastTrips(deps) {
+      for (let i = 0; i < deps.length; i++) {
+        const ai = arrMins(deps[i]);
+        for (let j = 0; j < i; j++) {
+          if (arrMins(deps[j]) > ai) {
+            deps[i].fast = true;
+            break;
+          }
+        }
+      }
+    }
+
     function initSelects() {
       const froms = [...new Set(ROUTES.map(r => r.from))].sort();
       const selFrom = document.getElementById('sel-from');
@@ -483,6 +520,7 @@
       }
 
       deps.sort((a, b) => a.depMins - b.depMins);
+      markFastTrips(deps);
 
       const list = document.getElementById('dep-list');
 
@@ -501,11 +539,12 @@
           detailParts.push(intermediates.length > 0 ? `${intermediates.join(', ')} üzerinden` : 'Direkt');
         }
 
-        return `<div class="dep-card">
+        return `<div class="dep-card${dep.fast ? ' fast' : ''}">
           <div class="dep-times">
             <span class="dep-time">${dep.time}</span>
             <span class="dep-arrow">→</span>
             <span class="arr-time">${dep.arrival}</span>
+            ${dep.fast ? '<span class="fast-badge">Daha hızlı</span>' : ''}
           </div>
           <div class="dep-meta">
             <span class="dep-details">${detailParts.join(' · ')}</span>
