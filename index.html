@@ -340,12 +340,17 @@
           { "time": "00:00", "arrival": "00:35", "stops": ["Büyükada"] },
           { "time": "02:00", "arrival": "03:10", "stops": ["Kınalıada", "Burgazada", "Heybeliada", "Büyükada"] },
           { "time": "04:45", "arrival": "05:55", "stops": ["Kınalıada", "Burgazada", "Heybeliada", "Büyükada"] },
+          { "time": "07:00", "arrival": "07:35", "stops": ["Büyükada"], "skip_on": ["weekday", "saturday"] },
+          { "time": "07:05", "arrival": "07:40", "stops": ["Büyükada"], "skip_on": ["sunday", "holiday"] },
           { "time": "07:45", "arrival": "08:20", "stops": ["Büyükada"] },
           { "time": "09:25", "arrival": "10:00", "stops": ["Büyükada"], "skip_on": ["sunday", "holiday"] },
           { "time": "10:05", "arrival": "10:40", "stops": ["Büyükada"], "skip_on": ["weekday", "saturday"] },
           { "time": "11:00", "arrival": "11:35", "stops": ["Büyükada"] },
+          { "time": "12:55", "arrival": "13:30", "stops": ["Büyükada"] },
           { "time": "15:10", "arrival": "16:20", "stops": ["Kınalıada", "Burgazada", "Heybeliada", "Büyükada"] },
+          { "time": "17:55", "arrival": "18:30", "stops": ["Büyükada"] },
           { "time": "18:35", "arrival": "19:10", "stops": ["Büyükada"] },
+          { "time": "20:00", "arrival": "20:35", "stops": ["Büyükada"] },
           { "time": "21:45", "arrival": "22:55", "stops": ["Kınalıada", "Burgazada", "Heybeliada", "Büyükada"] }
         ]
       },
@@ -359,35 +364,16 @@
           { "time": "05:55", "arrival": "06:30", "stops": ["Bostancı"] },
           { "time": "06:45", "arrival": "07:30", "stops": ["Heybeliada", "Bostancı"], "skip_on": ["sunday", "holiday"] },
           { "time": "07:05", "arrival": "07:45", "stops": ["Heybeliada", "Bostancı"], "skip_on": ["weekday", "saturday"] },
-          { "time": "10:00", "arrival": "11:10", "stops": ["Heybeliada", "Burgazada", "Kınalıada", "Bostancı"], "skip_on": ["sunday", "holiday"] },
-          { "time": "10:40", "arrival": "11:50", "stops": ["Heybeliada", "Burgazada", "Kınalıada", "Bostancı"], "skip_on": ["weekday", "saturday"] },
-          { "time": "16:20", "arrival": "16:55", "stops": ["Bostancı"] },
-          { "time": "17:45", "arrival": "18:20", "stops": ["Bostancı"] },
-          { "time": "19:10", "arrival": "20:20", "stops": ["Heybeliada", "Burgazada", "Kınalıada", "Bostancı"] },
-          { "time": "22:55", "arrival": "23:30", "stops": ["Bostancı"] }
-        ]
-      },
-      {
-        "company": "Şehir Hatları",
-        "from": "Bostancı",
-        "to": "Büyükada",
-        "departures": [
-          { "time": "07:00", "arrival": "07:35", "stops": ["Büyükada"], "skip_on": ["weekday", "saturday"] },
-          { "time": "07:05", "arrival": "07:40", "stops": ["Büyükada"], "skip_on": ["sunday", "holiday"] },
-          { "time": "12:55", "arrival": "13:30", "stops": ["Büyükada"] },
-          { "time": "17:55", "arrival": "18:30", "stops": ["Büyükada"] },
-          { "time": "20:00", "arrival": "20:35", "stops": ["Büyükada"] }
-        ]
-      },
-      {
-        "company": "Şehir Hatları",
-        "from": "Büyükada",
-        "to": "Bostancı",
-        "departures": [
           { "time": "08:30", "arrival": "09:05", "stops": ["Bostancı"], "skip_on": ["sunday", "holiday"] },
           { "time": "09:15", "arrival": "09:50", "stops": ["Bostancı"], "skip_on": ["weekday", "saturday"] },
+          { "time": "10:00", "arrival": "11:10", "stops": ["Heybeliada", "Burgazada", "Kınalıada", "Bostancı"], "skip_on": ["sunday", "holiday"] },
+          { "time": "10:40", "arrival": "11:50", "stops": ["Heybeliada", "Burgazada", "Kınalıada", "Bostancı"], "skip_on": ["weekday", "saturday"] },
           { "time": "12:50", "arrival": "13:25", "stops": ["Bostancı"] },
+          { "time": "16:20", "arrival": "16:55", "stops": ["Bostancı"] },
+          { "time": "17:45", "arrival": "18:20", "stops": ["Bostancı"] },
           { "time": "18:15", "arrival": "18:50", "stops": ["Bostancı"] },
+          { "time": "19:10", "arrival": "20:20", "stops": ["Heybeliada", "Burgazada", "Kınalıada", "Bostancı"] },
+          { "time": "22:55", "arrival": "23:30", "stops": ["Bostancı"] },
           { "time": "23:30", "arrival": "00:05", "stops": ["Bostancı"] }
         ]
       },
@@ -407,6 +393,7 @@
           { "time": "12:00", "arrival": "13:45", "stops": ["Kadıköy", "Kınalıada", "Burgazada", "Heybeliada", "Büyükada"], "skip_on": ["sunday", "holiday"] },
           { "time": "12:05", "arrival": "13:50", "stops": ["Kadıköy", "Kınalıada", "Burgazada", "Heybeliada", "Büyükada"], "skip_on": ["weekday", "saturday"] },
           { "time": "14:00", "arrival": "15:45", "stops": ["Kadıköy", "Kınalıada", "Burgazada", "Heybeliada", "Büyükada"] },
+          { "time": "15:30", "arrival": "16:45", "stops": ["Heybeliada", "Büyükada"], "skip_on": ["weekday", "saturday"] },
           { "time": "16:30", "arrival": "18:15", "stops": ["Kadıköy", "Kınalıada", "Burgazada", "Heybeliada", "Büyükada"] },
           { "time": "17:35", "arrival": "19:20", "stops": ["Kadıköy", "Kınalıada", "Burgazada", "Heybeliada", "Büyükada"] },
           { "time": "18:25", "arrival": "19:35", "stops": ["Heybeliada", "Büyükada"] },
@@ -470,6 +457,62 @@
       },
       {
         "company": "Şehir Hatları",
+        "from": "Büyükada",
+        "to": "Kadıköy",
+        "departures": [
+          { "time": "05:45", "arrival": "07:05", "stops": ["Heybeliada", "Burgazada", "Kınalıada", "Kadıköy"], "skip_on": ["sunday", "holiday"] },
+          { "time": "06:35", "arrival": "07:55", "stops": ["Heybeliada", "Burgazada", "Kınalıada", "Kadıköy"], "skip_on": ["sunday", "holiday"] },
+          { "time": "07:00", "arrival": "08:00", "stops": ["Heybeliada", "Kadıköy"], "skip_on": ["sunday", "holiday"] },
+          { "time": "07:00", "arrival": "08:20", "stops": ["Heybeliada", "Burgazada", "Kınalıada", "Kadıköy"], "skip_on": ["weekday", "saturday"] },
+          { "time": "07:40", "arrival": "09:00", "stops": ["Heybeliada", "Burgazada", "Kınalıada", "Kadıköy"], "skip_on": ["sunday", "holiday"] },
+          { "time": "09:00", "arrival": "10:20", "stops": ["Heybeliada", "Burgazada", "Kınalıada", "Kadıköy"] },
+          { "time": "10:00", "arrival": "11:00", "stops": ["Heybeliada", "Kadıköy"], "skip_on": ["weekday", "saturday"] },
+          { "time": "10:35", "arrival": "11:55", "stops": ["Heybeliada", "Burgazada", "Kınalıada", "Kadıköy"], "skip_on": ["sunday", "holiday"] },
+          { "time": "11:00", "arrival": "12:20", "stops": ["Heybeliada", "Burgazada", "Kınalıada", "Kadıköy"], "skip_on": ["weekday", "saturday"] },
+          { "time": "12:05", "arrival": "13:25", "stops": ["Heybeliada", "Burgazada", "Kınalıada", "Kadıköy"] },
+          { "time": "13:30", "arrival": "14:50", "stops": ["Heybeliada", "Burgazada", "Kınalıada", "Kadıköy"] },
+          { "time": "14:50", "arrival": "15:50", "stops": ["Heybeliada", "Kadıköy"] },
+          { "time": "15:00", "arrival": "16:20", "stops": ["Heybeliada", "Burgazada", "Kınalıada", "Kadıköy"] },
+          { "time": "16:00", "arrival": "17:00", "stops": ["Heybeliada", "Kadıköy"] },
+          { "time": "16:30", "arrival": "17:50", "stops": ["Heybeliada", "Burgazada", "Kınalıada", "Kadıköy"] },
+          { "time": "17:00", "arrival": "18:00", "stops": ["Heybeliada", "Kadıköy"], "skip_on": ["weekday", "saturday"] },
+          { "time": "17:35", "arrival": "18:55", "stops": ["Heybeliada", "Burgazada", "Kınalıada", "Kadıköy"] },
+          { "time": "18:30", "arrival": "19:50", "stops": ["Heybeliada", "Burgazada", "Kınalıada", "Kadıköy"] },
+          { "time": "19:00", "arrival": "20:00", "stops": ["Heybeliada", "Kadıköy"] },
+          { "time": "19:35", "arrival": "20:55", "stops": ["Heybeliada", "Burgazada", "Kınalıada", "Kadıköy"] },
+          { "time": "20:20", "arrival": "21:20", "stops": ["Heybeliada", "Kadıköy"] },
+          { "time": "20:35", "arrival": "21:55", "stops": ["Heybeliada", "Burgazada", "Kınalıada", "Kadıköy"] },
+          { "time": "21:45", "arrival": "23:05", "stops": ["Heybeliada", "Burgazada", "Kınalıada", "Kadıköy"] }
+        ]
+      },
+      {
+        "company": "Şehir Hatları",
+        "from": "Beşiktaş",
+        "to": "Büyükada",
+        "departures": [
+          { "time": "07:20", "arrival": "08:40", "stops": ["Heybeliada", "Büyükada"], "skip_on": ["sunday", "holiday"] },
+          { "time": "11:20", "arrival": "12:40", "stops": ["Heybeliada", "Büyükada"], "skip_on": ["weekday", "saturday"] },
+          { "time": "13:00", "arrival": "14:35", "stops": ["Kınalıada", "Burgazada", "Heybeliada", "Büyükada"] },
+          { "time": "17:10", "arrival": "18:30", "stops": ["Heybeliada", "Büyükada"] },
+          { "time": "18:20", "arrival": "19:40", "stops": ["Heybeliada", "Büyükada"] },
+          { "time": "20:50", "arrival": "22:25", "stops": ["Kınalıada", "Burgazada", "Heybeliada", "Büyükada"] }
+        ]
+      },
+      {
+        "company": "Şehir Hatları",
+        "from": "Büyükada",
+        "to": "Beşiktaş",
+        "departures": [
+          { "time": "07:00", "arrival": "08:30", "stops": ["Heybeliada", "Kadıköy", "Beşiktaş"], "skip_on": ["sunday", "holiday"] },
+          { "time": "10:00", "arrival": "11:30", "stops": ["Heybeliada", "Kadıköy", "Beşiktaş"], "skip_on": ["weekday", "saturday"] },
+          { "time": "14:50", "arrival": "16:20", "stops": ["Heybeliada", "Kadıköy", "Beşiktaş"] },
+          { "time": "16:00", "arrival": "17:30", "stops": ["Heybeliada", "Kadıköy", "Beşiktaş"] },
+          { "time": "19:00", "arrival": "20:30", "stops": ["Heybeliada", "Kadıköy", "Beşiktaş"] },
+          { "time": "20:20", "arrival": "21:50", "stops": ["Heybeliada", "Kadıköy", "Beşiktaş"] }
+        ]
+      },
+      {
+        "company": "Şehir Hatları",
         "from": "Maltepe",
         "to": "Büyükada",
         "departures": [
@@ -510,31 +553,6 @@
           { "time": "20:00", "arrival": "20:20", "stops": ["Maltepe"] },
           { "time": "21:00", "arrival": "21:20", "stops": ["Maltepe"] },
           { "time": "21:35", "arrival": "21:55", "stops": ["Maltepe"] }
-        ]
-      },
-      {
-        "company": "Şehir Hatları",
-        "from": "Büyükada",
-        "to": "Kadıköy",
-        "departures": [
-          { "time": "05:45", "arrival": "07:05", "stops": ["Heybeliada", "Burgazada", "Kınalıada", "Kadıköy"], "skip_on": ["sunday", "holiday"] },
-          { "time": "06:15", "arrival": "07:35", "stops": ["Heybeliada", "Burgazada", "Kınalıada", "Kadıköy"], "skip_on": ["weekday", "saturday"] },
-          { "time": "06:35", "arrival": "07:55", "stops": ["Heybeliada", "Burgazada", "Kınalıada", "Kadıköy"], "skip_on": ["sunday", "holiday"] },
-          { "time": "07:00", "arrival": "08:20", "stops": ["Heybeliada", "Burgazada", "Kınalıada", "Kadıköy"], "skip_on": ["weekday", "saturday"] },
-          { "time": "07:35", "arrival": "09:00", "stops": ["Heybeliada", "Burgazada", "Kınalıada", "Kadıköy"], "skip_on": ["weekday", "saturday"] },
-          { "time": "07:40", "arrival": "09:00", "stops": ["Heybeliada", "Burgazada", "Kınalıada", "Kadıköy"], "skip_on": ["sunday", "holiday"] },
-          { "time": "09:00", "arrival": "10:20", "stops": ["Heybeliada", "Burgazada", "Kınalıada", "Kadıköy"] },
-          { "time": "10:35", "arrival": "11:55", "stops": ["Heybeliada", "Burgazada", "Kınalıada", "Kadıköy"], "skip_on": ["sunday", "holiday"] },
-          { "time": "11:00", "arrival": "12:20", "stops": ["Heybeliada", "Burgazada", "Kınalıada", "Kadıköy"], "skip_on": ["weekday", "saturday"] },
-          { "time": "12:05", "arrival": "13:25", "stops": ["Heybeliada", "Burgazada", "Kınalıada", "Kadıköy"] },
-          { "time": "13:30", "arrival": "14:50", "stops": ["Heybeliada", "Burgazada", "Kınalıada", "Kadıköy"] },
-          { "time": "15:00", "arrival": "16:20", "stops": ["Heybeliada", "Burgazada", "Kınalıada", "Kadıköy"] },
-          { "time": "16:30", "arrival": "17:50", "stops": ["Heybeliada", "Burgazada", "Kınalıada", "Kadıköy"] },
-          { "time": "17:35", "arrival": "18:55", "stops": ["Heybeliada", "Burgazada", "Kınalıada", "Kadıköy"] },
-          { "time": "18:30", "arrival": "19:50", "stops": ["Heybeliada", "Burgazada", "Kınalıada", "Kadıköy"] },
-          { "time": "19:35", "arrival": "20:55", "stops": ["Heybeliada", "Burgazada", "Kınalıada", "Kadıköy"] },
-          { "time": "20:35", "arrival": "21:55", "stops": ["Heybeliada", "Burgazada", "Kınalıada", "Kadıköy"] },
-          { "time": "21:45", "arrival": "23:05", "stops": ["Heybeliada", "Burgazada", "Kınalıada", "Kadıköy"] }
         ]
       }
     ];
@@ -741,7 +759,7 @@
       list.innerHTML = cards.join('');
     }
 
-    // Init
+    // Initialize app
     document.getElementById('inp-datetime').value = nowLocal();
     initSelects();
     render();
